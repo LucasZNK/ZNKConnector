@@ -5,7 +5,10 @@
 > - mongoose
 > - gravatar
 > - express-validator
-
+> - React, Router, Hooks.
+> - Redux
+> - UUID
+> - Axios
 ```
 - git clone
 - npm instalL
@@ -39,6 +42,21 @@
 > - [x] Endpoint for Create education
 > - [x] Endpoint for Delete education by id
 > - [x] Endpoint for Get github repository by user name
+> - [x] Allowed CORS origin
+
+## Front End
+- npm install 
+- npm run server
+> - [x] Basic UI for Login , home and register users
+> - [x] Redux working
+> - [x] Alert component
+> - [x] Action for create alerts. Render alerts based on the alert type and changing the color.
+> - [x] Action for remove alert
+
+## For running server and client go to the root folder 
+
+- npm run dev
+
 
 ## PreReq
 For using the github endpoint for get the repositories by user name , first register the app in github OAuthApp and insert your credentials ind the default.json file.
