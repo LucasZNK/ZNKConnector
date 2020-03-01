@@ -1,5 +1,4 @@
-import React, { useState, Fragment } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Register = () => {
@@ -16,7 +15,7 @@ const Register = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    if (password != password2) {
+    if (password !== password2) {
       // TODO: Replace with alerts.
       console.log("Aler: Passwords do not match");
     } else {
