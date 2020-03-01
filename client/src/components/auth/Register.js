@@ -19,7 +19,7 @@ const Register = () => {
       // TODO: Replace with alerts.
       console.log("Aler: Passwords do not match");
     } else {
-      console.log(formData);
+      console.log(Success);
     }
   };
 
