@@ -21,7 +21,6 @@ const App = () => {
     // Verify user token every single time when the main component is loaded
     store.dispatch(loadUser());
   }, []);
-
   return (
     <Provider store={store}>
       <Router>

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-
-const Landing = () => {
+import { logout } from "../../actions/auth";
+import { connect } from "react-redux";
+import { PropTypes } from "prop-types";
+const Landing = ({ auth: { isAuthenticated, loading }, logout }) => {
   return (
     <section className="landing">
       <div className="dark-overlay">
@@ -11,18 +13,33 @@ const Landing = () => {
             Create a developer profile/portfolio, share posts and get help from
             other developers
           </p>
-          <div className="buttons">
-            <Link to="/register" className="btn btn-primary">
-              Sign Up
-            </Link>
-            <Link to="/login" className="btn btn-light">
-              Login
-            </Link>
-          </div>
+          {!loading && !isAuthenticated ? (
+            <Fragment>
+              <div className="buttons">
+                <Link to="/register" className="btn btn-primary">
+                  Sign Up
+                </Link>
+                <Link to="/login" className="btn btn-light">
+                  Login
+                </Link>
+              </div>
+            </Fragment>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </section>
   );
 };
 
-export default Landing;
+Landing.propType = {
+  auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { logout })(Landing);
