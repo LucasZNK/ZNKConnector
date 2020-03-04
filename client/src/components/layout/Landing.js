@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { logout } from "../../actions/auth";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-const Landing = ({ auth: { isAuthenticated, loading }, logout }) => {
+
+const Landing = ({ auth: { isAuthenticated, loading } }) => {
   return (
     <section className="landing">
       <div className="dark-overlay">
