@@ -10,14 +10,16 @@ import {
 } from "./types";
 import { setAlert } from "./alert";
 import setAuthToken from "../utils/setAuthToken";
+import { URL_API_AUTH, URL_API_USERS } from "../utils/endpoints";
+import { alerts } from "../utils/constants";
 
-// lOAD USER, check if have token put in global header
+//lOAD USER, check if have token put in global header
 export const loadUser = () => async dispatch => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
   try {
-    const res = await axios.get("http://localhost:5000/api/auth");
+    const res = await axios.get(URL_API_AUTH);
     dispatch({
       type: USER_LOADED,
       payload: res.data
@@ -29,8 +31,7 @@ export const loadUser = () => async dispatch => {
   }
 };
 
-//* REGISTER USER
-
+//REGISTER USER
 export const register = ({ name, email, password }) => async dispatch => {
   const config = {
     headers: {
@@ -41,11 +42,7 @@ export const register = ({ name, email, password }) => async dispatch => {
   const body = JSON.stringify({ name, email, password });
 
   try {
-    const res = await axios.post(
-      "http://localhost:5000/api/users",
-      body,
-      config
-    );
+    const res = await axios.post(URL_API_USERS, body, config);
     if (res.status === 400) {
     }
     dispatch({
@@ -54,12 +51,13 @@ export const register = ({ name, email, password }) => async dispatch => {
     });
     dispatch(loadUser());
     dispatch(
-      setAlert(`Welcome ${name} to the ZNKConnector comunnity`, "success")
+      setAlert(`Welcome ${name} to the ZNKConnector comunnity`, alerts.success)
     );
   } catch (error) {
     const errors = error.response.data;
+
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+      errors.forEach(error => dispatch(setAlert(error.msg, alerts.danger)));
     }
 
     dispatch({
@@ -68,8 +66,7 @@ export const register = ({ name, email, password }) => async dispatch => {
   }
 };
 
-//* Login USER
-
+//Login USER
 export const login = (email, password) => async dispatch => {
   const config = {
     headers: {
@@ -80,11 +77,7 @@ export const login = (email, password) => async dispatch => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const res = await axios.post(
-      "http://localhost:5000/api/auth",
-      body,
-      config
-    );
+    const res = await axios.post(URL_API_AUTH, body, config);
     if (res.status === 400) {
     }
     dispatch({

@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://lucaszanek:subelequesubele@znkconnectorcluster-tzi5z.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mySecretjwt",
+  "gitHubClientId": "YOUR GITHUB CLIENT ID FOR THIS OAuthApp",
+  "gitHubSecret": "YOUR GITHUB SECRET FOR THIS OAuthApp"
+}

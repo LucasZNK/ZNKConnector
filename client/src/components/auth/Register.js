@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
+import { alerts } from "../../utils/constants";
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
-      setAlert("Alert: Passwords do not match", "danger", 4000);
+      setAlert("Alert: Passwords do not match", alerts.danger, 4000);
     } else {
       register({ name, email, password });
     }
